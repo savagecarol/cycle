@@ -1,3 +1,6 @@
+/* app.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 .App {
   text-align: center;
 }
@@ -36,3 +39,12 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif; /* Apply Montserrat to headings */
+}
+
