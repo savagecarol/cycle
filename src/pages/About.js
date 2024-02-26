@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import  one from '../assets/one.png'
-import Cycle from '../animation/Cycle'
+import Blob from '../assets/blob.svg'
 
 const About = () => {
   return (
@@ -19,16 +19,13 @@ const About = () => {
                 </p>
             </div>
             <div class="relative">
-                <img class="absolute inset-x-0 bottom-0  -translate-x-1/2 left-1/2" src="https://cdn.rareblocks.xyz/collection/celebration/images/team/1/blob-shape.svg" alt="" />
+                <div class="absolute inset-x-0  -translate-x-1/2 left-1/2 w-full bottom-0" >
+                    <img src  = {Blob}/>
+                </div>
                 <img class="relative w-full xl:max-w-lg xl:mx-auto 2xl:origin-bottom 2xl:scale-110" src={one} alt="" />
             </div>
         </div>
     </div>
-    {/* <div class='grid grid-cols-1 place-items-center h-72'>
-        <div class='h-24 w-96 '>
-                    <Cycle />
-        </div>
-    </div> */}
 </section>
 </div>
   )
