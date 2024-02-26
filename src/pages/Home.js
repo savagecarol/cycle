@@ -1,12 +1,17 @@
 import React from 'react'
+import Cycle from '../animation/Cycle'
 import Navbar from '../components/Navbar'
-import Carousel from '../components/Carousel.js'
+import Visitcard from '../components/Visitcard'
 
 const Home = () => {
   return (
     <div>
     <Navbar/>
-    <Carousel/>
+
+    <Cycle/>
+    <div class= 'mx-32 my-16'>
+    <Visitcard/>
+    </div>
     </div>
   )
 }
