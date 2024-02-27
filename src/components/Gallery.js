@@ -4,9 +4,8 @@ const Gallery = ({imagesList}) => {
   return (
 
 <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap -m-4">
-
+  <div class="container  mx-auto">
+    <div class="flex flex-wrap ">
             {
                 imagesList.map((images) => (
                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
