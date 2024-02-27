@@ -6,7 +6,8 @@ import Rides from './presentation/Rides';
 import Story from './presentation/Story';
 import ReadStory from './presentation/pages/ReadStory';
 import CreateStory from './presentation/pages/CreateStory';
-import Admin from './presentation/admin/Admin';
+import AdminPanel from './presentation/admin/AdminPanel';
+import Login from './presentation/admin/Login';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path="/stories/:storyId" element={<ReadStory />} />
         <Route path="/stories" element={<Story />} />
         <Route path="/about" element={<About />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin-panel" element={<AdminPanel />} />
       </Routes>
     </Router>
   );

@@ -32,12 +32,12 @@ const RideCard = () => {
     </div>
 </div>
 
-    {/* <div className="mt-8 ml-16">
+    <div className="mt-8 ml-16">
              <RideStepper/>
-    </div> */}
+    </div>
 
 
-            <Gallery imagesList={imageList}/>
+            {/* <Gallery imagesList={imageList}/> */}
  
 </div>
   );
