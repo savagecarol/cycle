@@ -22,10 +22,10 @@ const Home = () => {
           ))]}
         </Carousel>
         <HomeStoryCard/>     
-        <div class= 'mx-32 '>
+        <div className= 'mx-32 '>
             <Visitcard/>
         </div>
-        <div class= 'mx-96 mt-32'>
+        <div className= 'mx-96 mt-32'>
                  <Cycle/>
         </div>   
        
