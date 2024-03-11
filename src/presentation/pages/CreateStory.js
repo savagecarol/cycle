@@ -8,7 +8,6 @@ const CreateStory = () => {
   const maxNumber = 8;
 
   const onChange = (imageList, addUpdateIndex) => {
-    console.log(imageList, addUpdateIndex);
     setImages(imageList);
   };
 

@@ -19,7 +19,6 @@ import {updateSiteCounter} from './services/FirebaseFunction';
 function App() {
   useEffect(() => {
     const fetchData = async () => {
-      console.log("DFDSFdfs");
       updateSiteCounter(StaticData.collectionName.counterDb , StaticData.counterDocument);
     };
     fetchData();

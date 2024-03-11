@@ -4,9 +4,11 @@ const StaticData = {
     collectionName : {
         bannerDb : "BANNER" ,
         counterDb : "COUNTER",
+        aboutDb : "ABOUT"
 
     },
     counterDocument : "bXl0IhUXLQRm0sjp5tli",
+    aboutDocument : "SKmzfSyvpqC2AmvOcdpw",
     bannerCustomList:[
         {url: "https://www.shutterstock.com/shutterstock/photos/502862680/display_1500/stock-vector-vector-sports-web-banner-motivational-concept-the-silhouette-of-the-biker-mountain-biking-man-502862680.jpg"},
         {url:  "https://www.shutterstock.com/image-vector/vector-cyclist-silhouette-ride-on-600nw-2206396469.jpg"},

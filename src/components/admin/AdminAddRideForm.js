@@ -10,7 +10,6 @@ const AdminAddRideForm = () => {
     const maxNumber = 1;
   
     const onChange = (imageList, addUpdateIndex) => {
-      console.log(imageList, addUpdateIndex);
       setImages(imageList);
     };
     

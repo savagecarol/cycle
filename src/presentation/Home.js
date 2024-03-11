@@ -21,7 +21,6 @@ const Home = () => {
       try {
         const bannerData = await fetchAllDataFromCollection(StaticData.collectionName.bannerDb);
         const counterInfo = await fetchAllDataFromCollection(StaticData.collectionName.counterDb);
-        console.log(counterInfo[0])
         setSlides(bannerData);
         setCounterData(counterInfo[0]);
         setBannerLoading(false);

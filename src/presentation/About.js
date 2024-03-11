@@ -1,32 +1,67 @@
-import React from 'react'
+import React , {useState , useEffect} from 'react'
 import Navbar from '../components/Navbar'
-import  one from '../assets/one.png'
 import Blob from '../assets/blob.svg'
+import {getDocumentById} from '../services/FirebaseFunction';
+import StaticData from '../utils/Global';
+import Cycle from '../animation/Cycle';
 
 const About = () => {
+    const [isDataLoading, setDataLoading] = useState(true);
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const aboutData = await getDocumentById(StaticData.collectionName.aboutDb , StaticData.aboutDocument);
+            setData(aboutData);
+            console.log(aboutData);
+            setDataLoading(false);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+            setDataLoading(true);
+          }
+        };
+      
+        fetchData();
+      }, []);
+
+
+
   return (
     <div> 
     <Navbar/>
+
+    { isDataLoading ? (
+        <div className=' flex flex-col justify-center items-center' >                     
+              <div className=" mx-32 my-32">
+                   <Cycle/>
+              </div>
+        </div>
+      ) : (
+    
     <section className="mx-32 overflow-hidden  md:pt-0 sm:pt-16 2xl:pt-16 " >
     <div className=" sm:px-6 lg:px-8 ">
         <div className="grid items-center grid-cols-1 md:grid-cols-2">
             <div>
                 <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Hey 👋 I am 
-                    <br className="block sm:hidden" /> Kartikeya Sharma
+                    <br className="block sm:hidden" /> {data.name}
                 </h2>
                 <p className="max-w-lg mt-3 text-xl  text-gray-600 md:mt-8">
-                I'm Kartikeya Sharma, a software engineer based in Noida, fueled by a love for cycling. Riding through the streets of Noida brings me solace, as I immerse myself in the rhythm of the pedals and the changing scenery. Inspired by my passion for exploration, I've set out to create an online community for fellow cyclists. Through our website, we'll unite individuals who share our enthusiasm for adventure and cycling. Together, we'll organize group rides, exchange favorite routes, and encourage each other to push our boundaries. Whether you're a seasoned cyclist or just starting, our community welcomes you to join us on this journey. Let's explore the beauty of Noida and beyond, one pedal at a time.
+                {data.description}               
                 </p>
             </div>
             <div className="relative">
                 <div className="absolute inset-x-0  -translate-x-1/2 left-1/2 w-full bottom-0" >
                     <img src  = {Blob}/>
                 </div>
-                <img className="relative w-full xl:max-w-lg xl:mx-auto 2xl:origin-bottom 2xl:scale-110" src={one} alt="" />
+                <img className="relative w-full xl:max-w-lg xl:mx-auto 2xl:origin-bottom 2xl:scale-110" src={data.imageUrl} alt="" />
             </div>
         </div>
     </div>
 </section>
+      )
+      }
+   
 </div>
   )
 }
