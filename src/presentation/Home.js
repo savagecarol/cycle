@@ -9,22 +9,28 @@ import StaticData from '../utils/Global'
 
 const Home = () => {
 
-  const [isLoading, setLoading] = useState(true);
+  const [isBannerLoading, setBannerLoading] = useState(true);
+  const [isCounterLoading, setCounterLoading] = useState(true);
   const [slides, setSlides] = useState([]);
+  const [counterData, setCounterData] = useState();
 
 
   useEffect(() => {
 
     const fetchData = async () => {
       try {
-        const data = await fetchAllDataFromCollection(StaticData.collectionName.bannerDb);
-        setSlides(data);
-        setSlides(StaticData.bannerCustomList);
-        setLoading(false);
+        const bannerData = await fetchAllDataFromCollection(StaticData.collectionName.bannerDb);
+        const counterInfo = await fetchAllDataFromCollection(StaticData.collectionName.counterDb);
+        console.log(counterInfo[0])
+        setSlides(bannerData);
+        setCounterData(counterInfo[0]);
+        setBannerLoading(false);
+        setCounterLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
         setSlides(StaticData.bannerCustomList);
-        setLoading(false);
+        setBannerLoading(false);
+        setCounterLoading(true);
       }
     };
   
@@ -35,7 +41,7 @@ const Home = () => {
   return (
     <div>
         <Navbar/>   
-        { isLoading ? (
+        { isBannerLoading ? (
         <div className=' flex flex-col justify-center items-center' >                     
               <div className="h-96 w-96 mx-32 my-32">
                    <Cycle/>
@@ -47,9 +53,20 @@ const Home = () => {
       }
 
         <HomeStoryCard/>     
-        <div className= 'mx-32 '>
-            <Visitcard/>
+
+        { isCounterLoading ? (
+        <div className=' flex flex-col justify-center items-center' >                     
+              <div className="h-96 w-96 mx-32 my-32">
+                   <Cycle/>
+              </div>
         </div>
+      ) : (
+        <div className= 'mx-32 '>
+            <Visitcard memberCount = {counterData["memberCount"]}  rideCount = {counterData["rideCount"]}   visitCount = {counterData["webSiteCount"]} />
+        </div>
+        )
+      }
+
         <div className= 'mx-96 mt-32'>
                  <Cycle/>
         </div>   

@@ -1,4 +1,5 @@
 import './App.css';
+import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './presentation/Home';
 import About from './presentation/About';
@@ -10,8 +11,21 @@ import AdminPanel from './presentation/admin/AdminPanel';
 import Login from './presentation/admin/Login';
 import AdminPanelAllRides from './presentation/admin/AdminPanelAllRides';
 import AdminPanelAddRides from './presentation/admin/AdminPanelAddRides';
+import StaticData from './utils/Global';
+import {updateSiteCounter} from './services/FirebaseFunction';
+
+
 
 function App() {
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log("DFDSFdfs");
+      updateSiteCounter(StaticData.collectionName.counterDb , StaticData.counterDocument);
+    };
+    fetchData();
+
+  }, []);
+
   return (
      <Router>
       <Routes>

@@ -31,9 +31,9 @@ const fetchData = async () => {
     }
 };
 
-const getDocumentById = async (documentId) => {
+const getDocumentById = async (collectionName , documentId) => {
     try {
-        const collectionRef = firestore.collection('BANNER');
+        const collectionRef = firestore.collection(collectionName);
         const documentSnapshot = await collectionRef.doc(documentId).get();
         if (documentSnapshot.exists) {
             return {
@@ -50,4 +50,27 @@ const getDocumentById = async (documentId) => {
     }
 };
 
-export { fetchAllDataFromCollection, fetchData, getDocumentById };
+
+const updateSiteCounter = async (collectionName, documentId) => {
+  try {
+      const collectionRef = firestore.collection(collectionName);
+      const documentRef = collectionRef.doc(documentId);
+      const documentSnapshot = await documentRef.get();
+      if (!documentSnapshot.exists) {
+          console.log('Document does not exist');
+          return null;
+      }
+
+      var newData  = documentSnapshot.data()
+      newData.webSiteCount = newData.webSiteCount + 1
+      await documentRef.update(newData);
+      console.log('Document updated ');
+      return null;
+  } catch (error) {
+      console.error('Error updating document: ', error);
+      return null;
+  }
+};
+
+
+export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter};
