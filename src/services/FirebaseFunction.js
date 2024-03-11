@@ -1,4 +1,5 @@
-import firestore from '../utils/Firebase'; 
+import {firestore,auth} from '../utils/Firebase'; 
+
 
 
 const fetchAllDataFromCollection = async ( collectionName ) => {
@@ -73,4 +74,29 @@ const updateSiteCounter = async (collectionName, documentId) => {
 };
 
 
-export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter};
+const login = async(email , password) => {
+    try {
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        const user = userCredential.user;
+        if (user) {
+          const uid = user.uid;
+          return uid; 
+        } else {
+          return null;
+        }
+      } catch (error) {
+        return null;
+      }
+}
+
+
+const logOut = () => {
+    try {
+        localStorage.removeItem('uuid')
+        return true;
+      } catch (error) {
+        return false;
+      }
+}
+
+export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut};

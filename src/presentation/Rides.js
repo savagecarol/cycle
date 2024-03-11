@@ -10,8 +10,8 @@ const Rides = () => {
   return (
     <div>
     <Navbar/>
-    <div class = 'mx-16 my-16'>
-        <div class = 'text-lg subpixel-antialiased font-bold'>Upcoming rides </div>
+    <div className = 'mx-16 my-16'>
+        <div className = 'text-lg subpixel-antialiased font-bold'>Upcoming rides </div>
         {
             upcome.map(upComing => (
 
@@ -22,7 +22,7 @@ const Rides = () => {
             ))
         }
             
-        <div class = 'text-lg subpixel-antialiased font-bold mt-8'>Old rides</div>
+        <div className = 'text-lg subpixel-antialiased font-bold mt-8'>Old rides</div>
             {
                 old.map(old => (
 

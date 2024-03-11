@@ -1,5 +1,7 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import 'firebase/compat/auth';
+
 
 const firebaseConfig = {
         apiKey: "AIzaSyAMOgZj-HNEdEANoWZqD6thyK7waxJ2FpU",
@@ -13,5 +15,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const firestore = firebase.firestore();
+const auth = firebase.auth();
 
-export default firestore;
+export {firestore, auth};

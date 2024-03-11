@@ -8,8 +8,8 @@ const AdminPanelAllRides = () => {
   return (
     <div>
     <AdminNavbar/>
-    <div class = 'mx-16 my-16'>
-        <div class = 'text-lg subpixel-antialiased font-bold'>All rides </div>
+    <div className = 'mx-16 my-16'>
+        <div className = 'text-lg subpixel-antialiased font-bold'>All rides </div>
         {
             upcome.map(upComing => (
 
