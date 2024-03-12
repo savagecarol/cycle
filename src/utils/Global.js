@@ -4,8 +4,8 @@ const StaticData = {
     collectionName : {
         bannerDb : "BANNER" ,
         counterDb : "COUNTER",
-        aboutDb : "ABOUT"
-
+        aboutDb : "ABOUT",
+        rideDb : "RIDE"
     },
     counterDocument : "bXl0IhUXLQRm0sjp5tli",
     aboutDocument : "SKmzfSyvpqC2AmvOcdpw",

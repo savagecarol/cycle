@@ -1,4 +1,5 @@
-import {firestore,auth} from '../utils/Firebase'; 
+import {firestore,auth , storage} from '../utils/Firebase'; 
+import { v4 as uuidv4 } from 'uuid'; 
 
 
 
@@ -99,4 +100,44 @@ const logOut = () => {
       }
 }
 
-export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut};
+
+const uploadImageToStorage = async (imageFile , collectionName) => {
+  try {
+    const fileName = `${uuidv4()}_${imageFile.name}`;
+    const storageRef = storage.ref(`${collectionName}/${fileName}`);
+    const uploadTask = storageRef.put(imageFile);
+    const snapshot = await uploadTask;
+    const downloadURL = await snapshot.ref.getDownloadURL();
+    return downloadURL; 
+  } catch (error) {
+    console.error('Error uploading image to storage:', error);
+    throw error; // Re-throw the error to handle it in the calling function
+  }
+};
+
+
+const addDocumentToCollection = async (collectionName, data) => {
+    try {
+      const collectionRef = firestore.collection(collectionName);
+      if (data.images && data.images.length > 0) {
+        const uploadPromises = [];
+        for (const imageFile of data.images) {
+          const uploadPromise = uploadImageToStorage(imageFile , collectionName);
+          uploadPromises.push(uploadPromise);
+        }
+  
+        // Wait for all image uploads to complete and get the download URLs
+        const downloadURLs = await Promise.all(uploadPromises);
+        data.images = downloadURLs;
+      }
+  
+      // Add the modified data object to the Firestore collection
+      await collectionRef.add(data);
+      console.log('Document added to collection:', collectionName);
+    } catch (error) {
+      console.error('Error adding document to collection:', error);
+      throw error; // Re-throw the error to handle it in the component if needed
+    }
+  };
+
+export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut , addDocumentToCollection};
