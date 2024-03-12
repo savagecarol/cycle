@@ -5,7 +5,8 @@ const StaticData = {
         bannerDb : "BANNER" ,
         counterDb : "COUNTER",
         aboutDb : "ABOUT",
-        rideDb : "RIDE"
+        rideDb : "RIDE",
+        storyDb : "STORY"
     },
     counterDocument : "bXl0IhUXLQRm0sjp5tli",
     aboutDocument : "SKmzfSyvpqC2AmvOcdpw",
