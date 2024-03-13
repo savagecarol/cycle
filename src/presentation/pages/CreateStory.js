@@ -12,9 +12,11 @@ const CreateStory = () => {
   const [inputs, setInputs] = useState({
     name: '',
     email: '',
+    description:'',
     title: '',
     story: '',
-    images: []
+    images: [],
+    status: 0
   });
 
   const maxNumber = 8;
@@ -38,16 +40,18 @@ const CreateStory = () => {
     e.preventDefault();
     try {
       if (!validateForm()) return;
+
       await addDocumentToCollection(StaticData.collectionName.storyDb, inputs);
       setInputs({
         name: '',
         email: '',
         title: '',
         story: '',
+        description : '',
         images: []
       });
       toast.success("Story submitted successfully");
-      navigate("/"); // Redirect to home page after submission
+       navigate("/"); 
     } catch (error) {
       toast.error("Error submitting story");
       console.error('Error adding story document: ', error);
@@ -72,8 +76,8 @@ const CreateStory = () => {
       return false;
     }
 
-    if (inputs.story.trim().split(/\s+/).length < 200) {
-      toast.error('Story should have at least 200 words');
+    if (inputs.story.trim().split(/\s+/).length < 50) {
+      toast.error('Story should have at least 50 words');
       return false;
     }
 
@@ -99,6 +103,7 @@ const CreateStory = () => {
               <CustomInputField title="Name" name="name" value={inputs.name} onChange={handleChange} />
               <CustomInputField title="Email" name="email" value={inputs.email} onChange={handleChange} />
               <CustomInputField title="Title" name="title" value={inputs.title} onChange={handleChange} />
+              <CustomInputField title="Description" name="description" value={inputs.description} onChange={handleChange} />
               <div className="p-2 w-full">
                 <div className="relative">
                   <label htmlFor="story" className="leading-7 text-sm text-gray-600">Story</label>

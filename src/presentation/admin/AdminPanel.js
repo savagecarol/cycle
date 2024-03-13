@@ -1,12 +1,34 @@
-import React from 'react'
+import React  , {useState , useEffect} from 'react'
 import Logo from '../../assets/logo.png'
 import add from '../../assets/add.png'
 import AdminNavbar from '../../components/admin/AdminNavbar'
 import AdminStoryCard from '../../components/admin/AdminStoryCard'
 import { NavLink } from 'react-router-dom';
+import Cycle from '../../animation/Cycle'
+import StaticData from '../../utils/Global'
+import { fetchAllDataFromStoryDbThatArePending } from '../../services/FirebaseFunction'
 
 const AdminPanel = () => {
-    const stories   = [1 , 2 , 3 , 4 , 5 , 6]
+  const [isStoryLoading, setStoryLoading] = useState(true);
+  const [stories, setStories] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchAllDataFromStoryDbThatArePending(StaticData.collectionName.storyDb);
+        setStoryLoading(false);
+        console.log(data);
+        setStories(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setStories([]);
+        setStoryLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  
   return (
     <div>
         <AdminNavbar/>
@@ -28,9 +50,18 @@ const AdminPanel = () => {
             <h1 className="sm:text-3xl text-s  title-font  text-gray-900 font-bold">Story Section</h1>            
             <section>            
             <div className="mb-16 grid grid-cols-1 sm:grid-cols-3 gap-2">
-                 {stories.map(story => (
-            <AdminStoryCard />   
-            ))}
+                 {
+                  isStoryLoading ?
+                  <div className='w-full flex flex-col justify-center items-center' >                     
+                    <div className="h-96 w-96 mx-32 my-32">
+                      <Cycle/>
+                    </div>
+                  </div>
+                 :
+                   stories.map(story => (
+                    <AdminStoryCard story = {story}/>   
+                  ))
+            }
             </div>
             </section>
         </div>

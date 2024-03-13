@@ -15,8 +15,13 @@ const StaticData = {
         {url:  "https://www.shutterstock.com/image-vector/vector-cyclist-silhouette-ride-on-600nw-2206396469.jpg"},
         {url: "https://c8.alamy.com/comp/MMYEJM/bicycle-club-vector-illustration-concept-for-shirt-or-logo-print-stamp-or-tee-vintage-typography-design-with-cycling-gear-and-chain-silhouette-e-MMYEJM.jpg"},
         {url: "https://www.shutterstock.com/image-photo/man-racing-cyclist-motion-on-600nw-1855937053.jpg"}
-    ]
+    ] , 
+    pending : 0,
+    accept : 1,
+    reject : 2
   };
+
   
   export default StaticData;
+
   
