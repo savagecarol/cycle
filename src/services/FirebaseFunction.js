@@ -1,5 +1,6 @@
 import {firestore,auth , storage} from '../utils/Firebase'; 
 import { v4 as uuidv4 } from 'uuid'; 
+import StaticData from '../utils/Global';
 
 
 
@@ -171,8 +172,16 @@ const uploadImageToStorage = async (imageDataUrl, collectionName) => {
         data.images = downloadURLs;
       }
       
-      // Add the modified data object to the Firestore collection
       await collectionRef.add(data);
+      if(collectionName === StaticData.collectionName.rideDb)
+      {
+
+          const counterDoc  = await getDocumentById(StaticData.collectionName.counterDb , StaticData.counterDocument);
+          await updateDocumentById(StaticData.collectionName.counterDb , StaticData.counterDocument  , {rideCount : counterDoc.rideCount + 1})
+      
+        }
+
+
       console.log('Document added to collection:', collectionName);
     } catch (error) {
       console.error('Error adding document to collection:', error);

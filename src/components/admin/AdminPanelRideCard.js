@@ -97,9 +97,9 @@ const formattedDateTime = `Date: ${formattedDate} Time: ${formattedTime}`;
   };
 
   return (
-    <div className="relative flex flex-col items-center">
+    <div className="relative  items-center w-full">
     <div className="flex bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 relative">
-      <img className="object-cover w-96 h-72 rounded-t-lg md:rounded-none md:rounded-s-lg" src={ride.images[0]} alt="" />
+      <img className="object-cover min-h-72  max-h-72 rounded-t-lg md:rounded-none md:rounded-s-lg" src={ride.images[0]} alt="" />
       <div className="flex flex-col justify-between leading-normal">
         <div>
           <h5 className="pl-4 pt-4 mb-2 text-2xl font-bold tracking-tight text-gray-900">{ride.title}</h5>
