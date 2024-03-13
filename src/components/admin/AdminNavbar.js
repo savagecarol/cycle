@@ -10,8 +10,9 @@ import toast ,  { Toaster } from 'react-hot-toast';
 const AdminNavbar = () => {
   const navigate = useNavigate();
 
-  const handleLogOut = () => {
-    if(logOut())
+  const handleLogOut = async () => {
+    const isLogout  = await logOut()
+    if(isLogout)
     {
       navigate('/login');
       toast.error("Successfully Logged Out"  , {duration : 500})

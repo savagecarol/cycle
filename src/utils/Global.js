@@ -1,5 +1,5 @@
 const StaticData = {
-    redirectUrl: "https://flowbite.com/",
+    redirectUrl: "http://localhost:3000",
     companyName: "Cycling",
     collectionName : {
         bannerDb : "BANNER" ,

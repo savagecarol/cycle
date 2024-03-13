@@ -5,9 +5,14 @@ import StaticData from '../../utils/Global';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import CustomInputField from '../../components/CustomInputField';
+import Cycle from '../../animation/Cycle';
 
 const CreateStory = () => {
   const navigate = useNavigate();
+  const [submitClicked, setSubmitClicked] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state for submission loading
+
+
 
   const [inputs, setInputs] = useState({
     name: '',
@@ -18,6 +23,9 @@ const CreateStory = () => {
     images: [],
     status: 0
   });
+
+
+ 
 
   const maxNumber = 8;
 
@@ -39,8 +47,9 @@ const CreateStory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (!submitClicked) return; 
       if (!validateForm()) return;
-
+      setIsSubmitting(true); 
       await addDocumentToCollection(StaticData.collectionName.storyDb, inputs);
       setInputs({
         name: '',
@@ -50,13 +59,20 @@ const CreateStory = () => {
         description : '',
         images: []
       });
-      toast.success("Story submitted successfully");
+        toast.success("Story submitted successfully");
        navigate("/"); 
     } catch (error) {
       toast.error("Error submitting story");
       console.error('Error adding story document: ', error);
+    }finally {
+      setIsSubmitting(false); // End the submission loading
     }
   };
+
+  const handleFormSubmit = () => {
+    setSubmitClicked(true); // Set the flag to indicate form submission
+  };
+
 
 
 
@@ -151,9 +167,20 @@ const CreateStory = () => {
                   </ImageUploading>
                 </div>
               </div>
+            
+            { isSubmitting ? 
+              <div className='w-full flex flex-col justify-center items-center' >                     
+                    <div className="h-24 w-24 mx-32 my-32">
+                      <Cycle/>
+                    </div>
+                  </div>
+                  :
               <div className="p-2 w-full">
-                <button type="submit" className="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
+                <button type="submit"   onClick={handleFormSubmit} className="flex mx-auto text-white bg-yellow-500 border-0 py-2 px-8 focus:outline-none hover:bg-yellow-600 rounded text-lg">Submit</button>
               </div>
+              
+              }
+
             </div>
           </form>
         </div>

@@ -214,4 +214,72 @@ const updateDocumentById = async (collectionName , documentId , updatedDoc) => {
     }
   };
 
-export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut , addDocumentToCollection , fetchAllDataFromStoryDbThatArePending , updateDocumentById };
+
+  const updateImageDocumentById = async (collectionName, documentId, imageList, firstImage) => {
+    try {
+        console.log(documentId);
+      // Upload all images to Firebase Storage and retrieve their download URLs
+      const downloadURLs = await Promise.all(imageList.map(imageDataUrl => uploadImageToStorage(imageDataUrl, collectionName)));
+  
+      // Reference to the Firestore document by its ID
+      const docRef = firestore.collection(collectionName).doc(documentId);
+  
+      // Update the document with the new imageList and firstImage
+      await docRef.update({
+        images: [firstImage , ...downloadURLs]
+      });
+      console.log('Document updated successfully.');
+    } catch (error) {
+      console.error('Error updating document:', error);
+    }
+  };
+
+
+  const deleteFileByUrl = async (fileUrl) => {
+    try {
+      const filename = decodeURIComponent(fileUrl.split('/').pop().split('?')[0]);
+      const fileRef = storage.ref().child(filename);
+      await fileRef.delete();
+      
+      console.log('File deleted successfully:', fileUrl);
+    } catch (error) {
+      console.error('Error deleting file:', error);
+      throw error;
+    }
+  };
+  
+
+
+  const deleteDocument = async (collectionName, document) => {
+    try {
+      // Extract the document ID
+      const documentId = document.id;
+  
+      // Check if the document has images
+      if (document.images && document.images.length > 0) {
+        // Delete each image from Firebase Storage
+        const deleteImagePromises = document.images.map(async (imageUrl) => {
+          // Delete the file from Firebase Storage using its URL
+          await deleteFileByUrl(imageUrl);
+        });
+  
+        // Wait for all image deletions to complete
+        await Promise.all(deleteImagePromises);
+      }
+  
+      // Reference to the Firestore document by its ID
+      const docRef = firestore.collection(collectionName).doc(documentId);
+  
+      // Delete the document from Firestore
+      await docRef.delete();
+  
+      console.log('Document deleted successfully');
+    } catch (error) {
+      console.error('Error deleting document:', error);
+      throw error;
+    }
+  };
+  
+
+  
+export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut , addDocumentToCollection , fetchAllDataFromStoryDbThatArePending , updateDocumentById , updateImageDocumentById , deleteDocument };

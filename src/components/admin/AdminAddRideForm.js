@@ -15,7 +15,8 @@ const AdminAddRideForm = () => {
     story: '',
     details: [''], 
     instruction: [''], 
-    images: []
+    images: [],
+    dateTime: '',
   });
 
   const maxNumber = 1;
@@ -85,7 +86,9 @@ const AdminAddRideForm = () => {
         story: '',
         details: [''],
         instruction: [''],
-        images: []
+        images: [], 
+        attendance : [],
+        dateTime: ''
       });
       toast.success("Successfully generated ride");
       navigate("/admin-panel")
@@ -124,6 +127,21 @@ const AdminAddRideForm = () => {
                   ></textarea>
                 </div>
               </div>
+
+              <div className="p-2 w-full">
+                <div className="relative">
+                  <label htmlFor="dateTime" className="leading-7 text-sm text-gray-600">Date and Time</label>
+                  <input
+                    type="datetime-local"
+                    id="dateTime"
+                    name="dateTime"
+                    value={inputs.dateTime}
+                    onChange={(e) => handleChange(e, null, null)}
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-yellow-500 focus:bg-white focus:ring-2 focus:ring-yellow-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  />
+                </div>
+              </div>
+
               {/* Details */}
               <div className="p-2 w-full">
                 <div className="relative">
