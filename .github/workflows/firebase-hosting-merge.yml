@@ -16,6 +16,7 @@ jobs:
           channelId: live
           projectId: cycle-e5661
         env:
+          CI: false
           REACT_APP_COMPANY_DESCRIPTION: ${{ secrets.REACT_APP_COMPANY_DESCRIPTION }}
           REACT_APP_REDIRECT_URL: ${{ secrets.REACT_APP_REDIRECT_URL }}
           REACT_APP_COMPANY_NAME: ${{ secrets.REACT_APP_COMPANY_NAME }}
