@@ -10,6 +10,7 @@ const About = () => {
     const [data, setData] = useState();
 
     useEffect(() => {
+      document.title = "ABOUT"
         const fetchData = async () => {
           try {
             const aboutData = await getDocumentById(StaticData.collectionName.aboutDb , StaticData.aboutDocument);

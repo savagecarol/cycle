@@ -13,6 +13,7 @@ const Rides = () => {
   const [upcomingRides, setUpcomingRides] = useState([]);
 
   useEffect(() => {
+    document.title = "RIDES"
     const fetchData = async () => {
       try {
         const data = await fetchAllDataFromCollection(StaticData.collectionName.rideDb);

@@ -40,7 +40,7 @@ const HomeStoryCard = () => {
       </div>
       <div className="flex flex-wrap -m-4">
      
-      {
+      {/* {
 
 
       isStoryLoading ?       
@@ -60,7 +60,7 @@ const HomeStoryCard = () => {
         </NavLink>
                 )
                 ) 
-      }
+      } */}
 
       </div>
     </div>

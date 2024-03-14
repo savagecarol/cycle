@@ -17,6 +17,7 @@ const Home = () => {
 
   useEffect(() => {
 
+    document.title = "HOME"
     const fetchData = async () => {
       try {
         const bannerData = await fetchAllDataFromCollection(StaticData.collectionName.bannerDb);
