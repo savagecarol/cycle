@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "cycle-e5661"
-  }
+    "default": "cycle-e5661",
+    "prod": "cycle-e5661"
+  },
+  "targets": {},
+  "etags": {}
 }
