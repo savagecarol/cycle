@@ -1,27 +1,29 @@
 const StaticData = {
-    redirectUrl: "http://localhost:3000",
-    companyName: "Cycling",
-    collectionName : {
-        bannerDb : "BANNER" ,
-        counterDb : "COUNTER",
-        aboutDb : "ABOUT",
-        rideDb : "RIDE",
-        storyDb : "STORY"
+    companyDescription: process.env.REACT_APP_COMPANY_DESCRIPTION,
+    redirectUrl: process.env.REACT_APP_REDIRECT_URL,
+    companyName: process.env.REACT_APP_COMPANY_NAME,
+    collectionName: {
+      bannerDb: process.env.REACT_APP_COLLECTION_BANNER_DB,
+      counterDb: process.env.REACT_APP_COLLECTION_COUNTER_DB,
+      aboutDb: process.env.REACT_APP_COLLECTION_ABOUT_DB,
+      rideDb: process.env.REACT_APP_COLLECTION_RIDE_DB,
+      storyDb: process.env.REACT_APP_COLLECTION_STORY_DB
     },
-    counterDocument : "bXl0IhUXLQRm0sjp5tli",
-    aboutDocument : "SKmzfSyvpqC2AmvOcdpw",
-    bannerCustomList:[
-        {url: "https://www.shutterstock.com/shutterstock/photos/502862680/display_1500/stock-vector-vector-sports-web-banner-motivational-concept-the-silhouette-of-the-biker-mountain-biking-man-502862680.jpg"},
-        {url:  "https://www.shutterstock.com/image-vector/vector-cyclist-silhouette-ride-on-600nw-2206396469.jpg"},
-        {url: "https://c8.alamy.com/comp/MMYEJM/bicycle-club-vector-illustration-concept-for-shirt-or-logo-print-stamp-or-tee-vintage-typography-design-with-cycling-gear-and-chain-silhouette-e-MMYEJM.jpg"},
-        {url: "https://www.shutterstock.com/image-photo/man-racing-cyclist-motion-on-600nw-1855937053.jpg"}
-    ] , 
-    pending : 0,
-    accept : 1,
-    reject : 2
+    counterDocument: process.env.REACT_APP_COUNTER_DOCUMENT,
+    aboutDocument: process.env.REACT_APP_ABOUT_DOCUMENT,
+    bannerCustomList: [
+      { url: process.env.REACT_APP_BANNER_CUSTOM_LIST_1 },
+      { url: process.env.REACT_APP_BANNER_CUSTOM_LIST_2 },
+      { url: process.env.REACT_APP_BANNER_CUSTOM_LIST_3 },
+      { url: process.env.REACT_APP_BANNER_CUSTOM_LIST_4 }
+    ],
+    pending: process.env.REACT_APP_PENDING,
+    accept: process.env.REACT_APP_ACCEPT,
+    reject: process.env.REACT_APP_REJECT,
+    telegramLink: process.env.REACT_APP_TELEGRAM_LINK
   };
-
+  
+  console.log(StaticData);
   
   export default StaticData;
-
   

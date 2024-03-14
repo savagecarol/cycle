@@ -206,6 +206,47 @@ const uploadImageToStorage = async (imageDataUrl, collectionName) => {
 };
 
 
+const fetchAllDataFromStoryDbThatAreAccept = async ( collectionName ) => {
+  try {
+      const collectionRef = firestore.collection(collectionName);
+      const snapshot = await collectionRef.where('status', '==', 1).get();
+      const documents = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+      }));
+      return documents;
+  } catch (error) {
+      console.error('Error fetching data: ', error);
+      return null;
+  }
+};
+
+
+
+const fetchAllDataFromStoryDbThatAreAcceptWithMaxCount = async (collectionName) => {
+  try {
+    const collectionRef = firestore.collection(collectionName);
+    const snapshot = await collectionRef
+      .where('status', '==', 1)
+      .orderBy('count', 'desc') 
+      .limit(4)
+      .get();
+    const documents = snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    console.log("Sssssssss")
+    console.log(documents);
+    console.log("Sssssssss")
+    return documents;
+  } catch (error) {
+    console.error('Error fetching data: ', error);
+    return null;
+  }
+};
+
+
+
 
 const updateDocumentById = async (collectionName , documentId , updatedDoc) => {
     try {
@@ -291,4 +332,4 @@ const updateDocumentById = async (collectionName , documentId , updatedDoc) => {
   
 
   
-export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut , addDocumentToCollection , fetchAllDataFromStoryDbThatArePending , updateDocumentById , updateImageDocumentById , deleteDocument };
+export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut , addDocumentToCollection , fetchAllDataFromStoryDbThatArePending , updateDocumentById , updateImageDocumentById , deleteDocument , fetchAllDataFromStoryDbThatAreAccept  , fetchAllDataFromStoryDbThatAreAcceptWithMaxCount};

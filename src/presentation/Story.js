@@ -1,30 +1,51 @@
-import React from 'react'
+import React  , {useState , useEffect} from 'react'
+import Cycle from '../animation/Cycle';
 import Navbar from '../components/Navbar'
 import StoryCard from '../components/StoryCard'
+import { fetchAllDataFromStoryDbThatAreAccept } from '../services/FirebaseFunction'; 
+import StaticData from '../utils/Global';
+
 
 
 const Story = () => {
 
-    const stories = [
-        { id: 1, title: "Story 1", content: "Lorem ipsum dolor sit amet" },
-        { id: 2, title: "Story 2", content: "Consectetur adipiscing elit" },
-        { id: 3, title: "Story 3", content: "Sed do eiusmod tempor incididunt" },
-        { id: 4, title: "Story 4", content: "Ut labore et dolore magna aliqua" },
-        { id: 5, title: "Story 5", content: "Ut enim ad minim veniam" },
-        { id: 6, title: "Story 6", content: "Quis nostrud exercitation ullamco" },
+  const [isStoryLoading, setStoryLoading] = useState(true);
+  const [stories, setStories] = useState([]);
 
-      ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchAllDataFromStoryDbThatAreAccept(StaticData.collectionName.storyDb);
+        setStoryLoading(false);
+        setStories(data);
+        console.log(data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setStories([]);
+        setStoryLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div>
     <Navbar/>
     <div className="mx-16 mb-16 grid grid-cols-1 sm:grid-cols-3 gap-2">
-      {stories.map(story => (
-        <StoryCard key={story.id} title={story.title} content={story.content} />
-      ))}
 
+          {
+            isStoryLoading ?
+                  <div className='w-full h-full flex flex-col justify-center items-center' >                     
+                    <div className="h-96 w-96 mx-32 my-32">
+                      <Cycle/>
+                    </div>
+                  </div>
+                 :
+                 stories.map(story => (
+        <StoryCard id={story.id} title={story.title} name={story.name} description = {story.description} image = {story.images[0]}/>
+      ))
+            }
     </div>
-
     </div>
   )
 }

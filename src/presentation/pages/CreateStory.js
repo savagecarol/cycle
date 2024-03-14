@@ -21,7 +21,8 @@ const CreateStory = () => {
     title: '',
     story: '',
     images: [],
-    status: 0
+    status: 0,
+    count : 0
   });
 
 
@@ -57,7 +58,9 @@ const CreateStory = () => {
         title: '',
         story: '',
         description : '',
-        images: []
+        images: [],
+        count : 0,
+        status : 0
       });
         toast.success("Story submitted successfully");
        navigate("/"); 

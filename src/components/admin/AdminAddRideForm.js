@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ImageUploading from 'react-images-uploading';
 import CustomInputField from '../CustomInputField'; 
-import { addDocumentToCollection } from '../../services/FirebaseFunction';
+import { addDocumentToCollection, updateDocumentById } from '../../services/FirebaseFunction';
 import StaticData from '../../utils/Global';
 import toast , {  Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -90,8 +90,10 @@ const AdminAddRideForm = () => {
         attendance : [],
         dateTime: ''
       });
-      toast.success("Successfully generated ride");
+      toast.success("Successfully generated ride")
+
       navigate("/admin-panel")
+    
     } catch (error) {
       toast.error("Error generating ride");
       console.error('Error adding ride document: ', error);

@@ -4,9 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './presentation/Home';
 import About from './presentation/About';
 import Rides from './presentation/Rides';
-import Story from './presentation/Story';
-import ReadStory from './presentation/pages/ReadStory';
-import CreateStory from './presentation/pages/CreateStory';
 import Login from './presentation/admin/Login';
 import StaticData from './utils/Global';
 import {updateSiteCounter} from './services/FirebaseFunction';
@@ -16,8 +13,9 @@ import AdminPanelAllRides from './presentation/admin/AdminPanelAllRides';
 import AdminPanel from './presentation/admin/AdminPanel';
 
 
-
 function App() {
+
+  console.log(StaticData)
   useEffect(() => {
     const fetchData = async () => {
       updateSiteCounter(StaticData.collectionName.counterDb , StaticData.counterDocument);
@@ -31,9 +29,9 @@ function App() {
       <Routes>
         <Route  path="/" element={<Home />} />
         <Route path="/rides" element={<Rides />} />
-        <Route path="/create-story" element={<CreateStory />} />
+        {/* <Route path="/create-story" element={<CreateStory />} />
         <Route path="/stories/:id" element={<ReadStory />} />
-        <Route path="/stories" element={<Story />} />
+        <Route path="/stories" element={<Story />} /> */}
         <Route path="/about" element={<About />} />
         <Route element={ <LoginRoute />}>
            <Route path="/login" element={<Login />} />

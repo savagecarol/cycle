@@ -103,7 +103,6 @@ const formattedDateTime = `Date: ${formattedDate} Time: ${formattedTime}`;
       <div className="flex flex-col justify-between leading-normal">
         <div>
           <h5 className="pl-4 pt-4 mb-2 text-2xl font-bold tracking-tight text-gray-900">{ride.title}</h5>
-
           <h2 className="pl-4 pr-4 mb-3 font-semibold text-gray-700">{formattedDateTime}</h2>
           <p className="pl-4 pr-4 mb-3 font-normal text-gray-700">{ride.story}</p>
         </div>

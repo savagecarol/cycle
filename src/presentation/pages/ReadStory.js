@@ -3,14 +3,12 @@ import Navbar from '../../components/Navbar'
 import Gallery from '../../components/Gallery';
 import Cycle from '../../animation/Cycle';
 import { useParams } from 'react-router-dom';
-import { getDocumentById } from '../../services/FirebaseFunction';
+import { getDocumentById, updateDocumentById } from '../../services/FirebaseFunction';
 import StaticData from '../../utils/Global';
 const ReadStory = () => {
     const [isStoryLoading, setStoryLoading] = useState(true);
     const [data, setData] = useState();
     const { id } = useParams(); 
-    console.log(id)
-
 
     useEffect(() => {
         fetchData(id);
@@ -22,11 +20,14 @@ const ReadStory = () => {
           if(response != null) {
               setStoryLoading(false)
               setData(response)
+              await updateDocumentById(StaticData.collectionName.storyDb , id , {count : response.count + 1});
         }
         } catch (error) {
           console.error('Error fetching data:', error);
           setStoryLoading(true)
-        }
+        } finally{
+
+          }
       };
 
     
@@ -48,7 +49,7 @@ const ReadStory = () => {
             <h1 className="sm:text-3xl text-2xl  title-font mb-2 text-gray-900 font-extrabold">{data.title}</h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">{data.description}</p>
             <div className="flex items-center mx-auto">
-                <img className="w-16 h-16 rounded-full" src="https://img.freepik.com/premium-vector/account-icon-user-icon-vector-graphics_292645-552.jpg" alt="Lana image" />
+                <img className="w-16 h-16 rounded-full" src="https://img.freepik.com/premium-vector/account-icon-user-icon-vector-graphics_292645-552.jpg" />
                 <p className="text-sm font-medium ">{data.name}</p>
             </div>
             <div className="px-5">

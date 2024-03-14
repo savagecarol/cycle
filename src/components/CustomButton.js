@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CustomButton =({ buttonName, color })=> {
+const CustomButton =({ buttonName, color , onClick })=> {
     const defaultColor = "yellow";
 
   
@@ -14,6 +14,7 @@ const CustomButton =({ buttonName, color })=> {
     return (
       <button
         type="button"
+        onClick={onClick}
         className={`text-${textColor} bg-${backgroundColor} hover:bg-${hoverColor} focus:ring-4 focus:outline-none focus:ring-${focusRingColor} font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-${defaultColor}-300 dark:text-${defaultColor}-300 dark:hover:text-white dark:hover:bg-${backgroundColor} dark:focus:ring-${focusRingDarkColor}`}
       >
         {buttonName}
