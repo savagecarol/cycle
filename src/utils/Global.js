@@ -23,7 +23,6 @@ const StaticData = {
     telegramLink: process.env.REACT_APP_TELEGRAM_LINK
   };
   
-  console.log(StaticData);
   
   export default StaticData;
   
