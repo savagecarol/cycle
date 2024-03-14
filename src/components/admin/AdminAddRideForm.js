@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ImageUploading from 'react-images-uploading';
 import CustomInputField from '../CustomInputField'; 
-import { addDocumentToCollection, updateDocumentById } from '../../services/FirebaseFunction';
+import { addDocumentToCollection } from '../../services/FirebaseFunction';
 import StaticData from '../../utils/Global';
 import toast , {  Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';

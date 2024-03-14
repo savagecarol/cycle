@@ -1,5 +1,5 @@
-import React, { useState , useEffect } from 'react'
-import Rides from '../presentation/Rides';
+import React, { useState  } from 'react'
+// import Rides from '../presentation/Rides';
 import CustomButton from './CustomButton';
 import Gallery from './Gallery';
 import Stepper from './Stepper';
@@ -29,7 +29,7 @@ const RideCard = ({ride}) => {
   return (
       <div>
 <div className="flex bg-white border border-gray-200 rounded-lg shadow  hover:bg-gray-100">
-    <img className="object-cover  w-96 h-64 rounded-t-lg   md:rounded-none md:rounded-s-lg" src={ride.images[0]} />
+    <img className="object-cover  w-96 h-64 rounded-t-lg   md:rounded-none md:rounded-s-lg" src={ride.images[0]} alt="ppic"/>
     <div className="flex flex-col justify-between leading-normal">
          <div> 
             <h5 className=" pl-4 pt-4 mb-1 text-2xl font-bold tracking-tight text-gray-900 ">{ride.title}</h5>

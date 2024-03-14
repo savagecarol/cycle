@@ -9,9 +9,9 @@ const Gallery = ({imagesList}) => {
             {
                 imagesList.map((images) => (
                     <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
-        <a className="block relative h-72 rounded overflow-hidden">
+        <div className="block relative h-72 rounded overflow-hidden">
           <img alt="ecommerce" className="object-cover object-center w-full h-full " src={images}/>
-        </a>
+        </div>
       </div>
                 ))
                  
