@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "cyclistclique",
     "public": "build",
     "ignore": [
       "firebase.json",
