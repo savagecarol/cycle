@@ -4,13 +4,13 @@ import Blob from '../assets/blob.svg'
 import {getDocumentById} from '../services/FirebaseFunction';
 import StaticData from '../utils/Global';
 import Cycle from '../animation/Cycle';
+import SEO from '../components/SEO';
 
 const About = () => {
     const [isDataLoading, setDataLoading] = useState(true);
     const [data, setData] = useState();
 
     useEffect(() => {
-      document.title = "ABOUT"
         const fetchData = async () => {
           try {
             const aboutData = await getDocumentById(StaticData.collectionName.aboutDb , StaticData.aboutDocument);
@@ -30,6 +30,7 @@ const About = () => {
 
   return (
     <div> 
+         <SEO title="ABOUT" description="About Page" />
     <Navbar/>
 
     { isDataLoading ? (

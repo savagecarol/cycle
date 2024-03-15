@@ -3,6 +3,7 @@ import Cycle from '../animation/Cycle'
 import CustomCarousel from '../components/CustomCrousel'
 import HomeStoryCard from '../components/HomeStoryCard'
 import Navbar from '../components/Navbar'
+import SEO from '../components/SEO'
 import Visitcard from '../components/Visitcard'
 import {fetchAllDataFromCollection} from '../services/FirebaseFunction';
 import StaticData from '../utils/Global'
@@ -16,8 +17,6 @@ const Home = () => {
 
 
   useEffect(() => {
-
-    document.title = "HOME"
     const fetchData = async () => {
       try {
         const bannerData = await fetchAllDataFromCollection(StaticData.collectionName.bannerDb);
@@ -40,6 +39,7 @@ const Home = () => {
 
   return (
     <div>
+          <SEO title="HOME" description="Home Page" />
         <Navbar/>   
         { isBannerLoading ? (
         <div className=' flex flex-col justify-center items-center' >                     
