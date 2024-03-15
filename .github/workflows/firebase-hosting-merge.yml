@@ -48,6 +48,8 @@ jobs:
       # Add a step to echo all the secrets
       - name: Print secrets
         run: |
+          eche "lol sdfsdfbdhsfbdsf dsfbdsjkfndsjk ds :  $firebaseServiceAccount"
+          echo "sfdmdsk dsfmnsdkldsf  : $repoToken"
           echo "REACT_APP_COMPANY_DESCRIPTION: $REACT_APP_COMPANY_DESCRIPTION"
           echo "REACT_APP_REDIRECT_URL: $REACT_APP_REDIRECT_URL"
           echo "REACT_APP_COMPANY_NAME: $REACT_APP_COMPANY_NAME"
