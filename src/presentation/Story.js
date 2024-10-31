@@ -30,7 +30,6 @@ const Story = () => {
 
   return (
     <div>
-         <SEO title="STORY" description="Story Page" />
     <Navbar/>
     <div className="mx-16 mb-16 grid grid-cols-1 sm:grid-cols-3 gap-2">
 

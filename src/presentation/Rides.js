@@ -2,7 +2,6 @@ import React  , {useState , useEffect} from 'react'
 import Cycle from '../animation/Cycle';
 import Navbar from '../components/Navbar'
 import RideCard from '../components/RideCard';
-import SEO from '../components/SEO';
 import { fetchAllDataFromCollection } from '../services/FirebaseFunction';
 import StaticData from '../utils/Global';
 
@@ -54,7 +53,6 @@ const Rides = () => {
 
   return (
 <div>
-  <SEO title="RIDE" description="RIDE Page" />
   <Navbar />
   <div className='mx-16 my-16'>
     {

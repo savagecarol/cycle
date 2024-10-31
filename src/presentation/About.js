@@ -4,7 +4,6 @@ import Blob from '../assets/blob.svg'
 import {getDocumentById} from '../services/FirebaseFunction';
 import StaticData from '../utils/Global';
 import Cycle from '../animation/Cycle';
-import SEO from '../components/SEO';
 
 const About = () => {
     const [isDataLoading, setDataLoading] = useState(true);
@@ -30,9 +29,7 @@ const About = () => {
 
   return (
     <div> 
-         <SEO title="ABOUT" description="About Page" />
     <Navbar/>
-
     { isDataLoading ? (
         <div className=' flex flex-col justify-center items-center' >                     
               <div className=" mx-32 my-32">
