@@ -129,7 +129,6 @@ const uploadImageToStorage = async (imageDataUrl, collectionName) => {
         const blob = await fetch(dataUrl)
             .then(res => res.blob())
             .then(blob => {
-                console.log('Blob:', blob);
                 return new Blob([blob], { type: mimeType });
             });
 
@@ -175,13 +174,9 @@ const uploadImageToStorage = async (imageDataUrl, collectionName) => {
       await collectionRef.add(data);
       if(collectionName === StaticData.collectionName.rideDb)
       {
-
           const counterDoc  = await getDocumentById(StaticData.collectionName.counterDb , StaticData.counterDocument);
           await updateDocumentById(StaticData.collectionName.counterDb , StaticData.counterDocument  , {rideCount : counterDoc.rideCount + 1})
-      
-        }
-
-
+      }
       console.log('Document added to collection:', collectionName);
     } catch (error) {
       console.error('Error adding document to collection:', error);
@@ -189,6 +184,16 @@ const uploadImageToStorage = async (imageDataUrl, collectionName) => {
     }
   };
 
+  const addDocumentToCollectionWithDocId = async (collectionName, data, docId) => {
+    try {
+      const collectionRef = firestore.collection(collectionName);
+      await collectionRef.doc(docId).set(data);
+      console.log('Document added to collection:', collectionName, 'with ID:', docId);
+    } catch (error) {
+      console.error('Error adding document to collection:', error);
+      throw error;
+    }
+  };
 
   const fetchAllDataFromStoryDbThatArePending = async ( collectionName ) => {
     try {
@@ -235,9 +240,6 @@ const fetchAllDataFromStoryDbThatAreAcceptWithMaxCount = async (collectionName) 
       id: doc.id,
       ...doc.data()
     }));
-    console.log("Sssssssss")
-    console.log(documents);
-    console.log("Sssssssss")
     return documents;
   } catch (error) {
     console.error('Error fetching data: ', error);
@@ -332,4 +334,4 @@ const updateDocumentById = async (collectionName , documentId , updatedDoc) => {
   
 
   
-export { fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut , addDocumentToCollection , fetchAllDataFromStoryDbThatArePending , updateDocumentById , updateImageDocumentById , deleteDocument , fetchAllDataFromStoryDbThatAreAccept  , fetchAllDataFromStoryDbThatAreAcceptWithMaxCount};
+export {fetchAllDataFromCollection, fetchData, getDocumentById  , updateSiteCounter , login , logOut , addDocumentToCollection , fetchAllDataFromStoryDbThatArePending , updateDocumentById , updateImageDocumentById , deleteDocument , fetchAllDataFromStoryDbThatAreAccept  , fetchAllDataFromStoryDbThatAreAcceptWithMaxCount,addDocumentToCollectionWithDocId};

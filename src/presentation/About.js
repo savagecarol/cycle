@@ -14,7 +14,6 @@ const About = () => {
           try {
             const aboutData = await getDocumentById(StaticData.collectionName.aboutDb , StaticData.aboutDocument);
             setData(aboutData);
-            console.log(aboutData);
             setDataLoading(false);
           } catch (error) {
             console.error('Error fetching data:', error);

@@ -16,7 +16,6 @@ const Story = () => {
         const data = await fetchAllDataFromStoryDbThatAreAccept(StaticData.collectionName.storyDb);
         setStoryLoading(false);
         setStories(data);
-        console.log(data)
       } catch (error) {
         console.error('Error fetching data:', error);
         setStories([]);
