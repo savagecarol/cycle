@@ -5,8 +5,6 @@ import StoryCard from '../components/StoryCard'
 import { fetchAllDataFromStoryDbThatAreAccept } from '../services/FirebaseFunction'; 
 import StaticData from '../utils/Global';
 
-
-
 const Story = () => {
 
   const [isStoryLoading, setStoryLoading] = useState(true);
