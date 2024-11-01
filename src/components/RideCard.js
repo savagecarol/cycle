@@ -53,7 +53,10 @@ const RideCard = ({ride}) => {
                         )}
 
             </div>
-                <CustomButton buttonName = "x" color="red" onClick={handleComponentClose} />
+                {
+                    activeComponent === null || activeComponent === '' ? <div></div> :
+                    <CustomButton buttonName = "x" color="red" onClick={handleComponentClose} />
+                }
              </div>    
     </div>
 </div>
