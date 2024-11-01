@@ -12,6 +12,7 @@ const fetchAllDataFromCollection = async ( collectionName ) => {
             id: doc.id,
             ...doc.data()
         }));
+        documents.sort((a, b) =>  new Date(b.dateTime) -  new Date(a.dateTime) );
         return documents;
     } catch (error) {
         console.error('Error fetching data: ', error);
