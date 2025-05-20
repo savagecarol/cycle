@@ -17,7 +17,6 @@ const AdminPanel = () => {
       try {
         const data = await fetchAllDataFromStoryDbThatArePending(StaticData.collectionName.storyDb);
         setStoryLoading(false);
-        console.log(data);
         setStories(data);
       } catch (error) {
         console.error('Error fetching data:', error);

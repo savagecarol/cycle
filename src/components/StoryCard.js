@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const StoryCard = ({id , title , name , description , image}) => {
-    console.log(id)
   return (
     <div className="relative isolate flex flex-col  overflow-hidden rounded-lg px-4 py-4  max-w-sm mx-auto mt-8 min-h-96 min-w-64"> 
         <img src={image} alt="University of Southern California" className="absolute inset-0 h-full w-full object-cover"/>

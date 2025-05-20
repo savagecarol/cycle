@@ -15,8 +15,8 @@ import AdminPanel from './presentation/admin/AdminPanel';
 
 function App() {
 
-  console.log(StaticData)
   useEffect(() => {
+    document.title = StaticData.companyName
     const fetchData = async () => {
       updateSiteCounter(StaticData.collectionName.counterDb , StaticData.counterDocument);
     };

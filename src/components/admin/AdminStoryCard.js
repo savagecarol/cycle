@@ -34,14 +34,14 @@ const AdminStoryCard = ({story }) => {
 
   return (
         <div className="relative isolate flex flex-col  overflow-hidden rounded-lg px-4 py-4  max-w-sm mx-auto mt-8 min-h-96 min-w-96"> 
-            <img src={story.images[0]} className="absolute inset-0 h-full w-full object-cover"/>
+            <img src={story.images[0]} className="absolute inset-0 h-full w-full object-cover" alt="imagesss"/>
                 <div className="absolute inset-x-1/2 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
                 <div className="z-10  overflow-hidden text-m  text-gray-200 font-semibold">{story.title} </div>
                 <div className="z-10  overflow-hidden text-sm  text-gray-200 font-semibold">{story.description} </div>
                 <div className="py-3 sm:py-4 z-10  ">
                     <div className="flex items-center ">
                         <div className="flex-shrink-0">
-                            <img className="w-8 h-8 rounded-full" src= "https://img.freepik.com/premium-vector/account-icon-user-icon-vector-graphics_292645-552.jpg" alt="Lana image" />
+                            <img className="w-8 h-8 rounded-full" src= "https://img.freepik.com/premium-vector/account-icon-user-icon-vector-graphics_292645-552.jpg" alt="Lana  rfndfd" />
                         </div>
                         <div className="flex-1 min-w-0 ms-4">
                             <p className="text-sm font-medium text-white truncate">

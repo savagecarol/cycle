@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import Cycle from '../animation/Cycle';
 import { fetchAllDataFromStoryDbThatAreAcceptWithMaxCount } from '../services/FirebaseFunction';
 import StaticData from '../utils/Global';
 
 const HomeStoryCard = () => {
   
-
+// eslint-disable-next-line
   const [isStoryLoading, setStoryLoading] = useState(true);
+// eslint-disable-next-line
   const [stories, setStories] = useState([]);
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const HomeStoryCard = () => {
       </div>
       <div className="flex flex-wrap -m-4">
      
-      {
+      {/* {
 
 
       isStoryLoading ?       
@@ -60,7 +59,7 @@ const HomeStoryCard = () => {
         </NavLink>
                 )
                 ) 
-      }
+      } */}
 
       </div>
     </div>

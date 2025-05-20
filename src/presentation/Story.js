@@ -5,8 +5,6 @@ import StoryCard from '../components/StoryCard'
 import { fetchAllDataFromStoryDbThatAreAccept } from '../services/FirebaseFunction'; 
 import StaticData from '../utils/Global';
 
-
-
 const Story = () => {
 
   const [isStoryLoading, setStoryLoading] = useState(true);
@@ -18,7 +16,6 @@ const Story = () => {
         const data = await fetchAllDataFromStoryDbThatAreAccept(StaticData.collectionName.storyDb);
         setStoryLoading(false);
         setStories(data);
-        console.log(data)
       } catch (error) {
         console.error('Error fetching data:', error);
         setStories([]);

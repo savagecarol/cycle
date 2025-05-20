@@ -10,11 +10,11 @@ const About = () => {
     const [data, setData] = useState();
 
     useEffect(() => {
+      
         const fetchData = async () => {
           try {
             const aboutData = await getDocumentById(StaticData.collectionName.aboutDb , StaticData.aboutDocument);
             setData(aboutData);
-            console.log(aboutData);
             setDataLoading(false);
           } catch (error) {
             console.error('Error fetching data:', error);
@@ -30,7 +30,6 @@ const About = () => {
   return (
     <div> 
     <Navbar/>
-
     { isDataLoading ? (
         <div className=' flex flex-col justify-center items-center' >                     
               <div className=" mx-32 my-32">
@@ -52,9 +51,9 @@ const About = () => {
             </div>
             <div className="relative">
                 <div className="absolute inset-x-0  -translate-x-1/2 left-1/2 w-full bottom-0" >
-                    <img src  = {Blob}/>
+                    <img src  = {Blob} alt="hi world" />
                 </div>
-                <img className="relative w-full xl:max-w-lg xl:mx-auto 2xl:origin-bottom 2xl:scale-110" src={data.imageUrl} alt="" />
+                <img className="relative w-full xl:max-w-lg xl:mx-auto 2xl:origin-bottom 2xl:scale-110" src={data.imageUrl} alt="hellow " />
             </div>
         </div>
     </div>

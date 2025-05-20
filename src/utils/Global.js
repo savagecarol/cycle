@@ -7,7 +7,8 @@ const StaticData = {
       counterDb: process.env.REACT_APP_COLLECTION_COUNTER_DB,
       aboutDb: process.env.REACT_APP_COLLECTION_ABOUT_DB,
       rideDb: process.env.REACT_APP_COLLECTION_RIDE_DB,
-      storyDb: process.env.REACT_APP_COLLECTION_STORY_DB
+      storyDb: process.env.REACT_APP_COLLECTION_STORY_DB,
+      newsLetterDb: process.env.REACT_APP_COLLECTION_NEWSLETTER_DB
     },
     counterDocument: process.env.REACT_APP_COUNTER_DOCUMENT,
     aboutDocument: process.env.REACT_APP_ABOUT_DOCUMENT,
@@ -20,10 +21,10 @@ const StaticData = {
     pending: process.env.REACT_APP_PENDING,
     accept: process.env.REACT_APP_ACCEPT,
     reject: process.env.REACT_APP_REJECT,
-    telegramLink: process.env.REACT_APP_TELEGRAM_LINK
+    telegramLink: process.env.REACT_APP_TELEGRAM_LINK,
+    newsletterText: process.env.REACT_APP_NEWSLETTER_TEXT
   };
   
-  console.log(StaticData);
   
   export default StaticData;
   
